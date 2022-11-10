@@ -13,7 +13,7 @@ on:
       openwrt_kernel:
         description: "Set the kernel version"
         required: false
-        default: "5.4.184"
+        default: "5.4.220"
       auto_kernel:
         description: "Auto use the latest kernel"
         required: false
@@ -53,13 +53,13 @@ jobs:
           sudo timedatectl set-timezone "${TZ}"
           sudo mkdir -p /workdir
           sudo chown ${USER}:${GROUPS} /workdir
+          df -hT ${PWD}
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Clone source code
         working-directory: /workdir
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
-          df -hT ${PWD}
           git clone --depth 1 ${REPO_URL} -b ${REPO_BRANCH} openwrt
           ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
 
@@ -98,7 +98,7 @@ jobs:
         run: |
           cd openwrt/
           echo -e "$(nproc) thread compile"
-          make -j$(($(nproc) + 1)) V=s || make -j1 || make -j1 V=s
+          make -j$(($(nproc) + 1)) || make -j1 V=s
           echo "build_tag=openwrt_amlogic_$(date +"%y.%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
           echo "status=success" >> ${GITHUB_OUTPUT}
 

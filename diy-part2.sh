@@ -26,8 +26,8 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr.git package/lean/
 # svn co https://github.com/fw876/helloworld/trunk/simple-obfs package/helloworld/simple-obfs
 # svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/helloworld/luci-app-ssr-plus
 
-# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
-# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2/luci-app-passwall2 package/luci-app-passwall2
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/openwrt-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/openwrt-passwall2
 
 # svn co https://github.com/kenzok8/small-package/trunk/luci-app-alist package/luci-app-alist
 

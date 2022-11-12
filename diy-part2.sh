@@ -11,7 +11,6 @@ sed -i 's/192.168.1.1/192.168.10.250/g' package/base-files/files/bin/config_gene
 
 # Modify default theme
 sed -i 's/luci-theme-bootstrap/luci-theme-neobird/g' ./feeds/luci/collections/luci/Makefile
-sed -i 's/shadowsocksr/vssr/g' ./package/lean/luci-theme-neobird/luasrc/view/themes/neobird/header.htm
 
 # Package
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git package/lean/lua-maxminddb
@@ -31,6 +30,10 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git p
 # luci-theme-neobird
 rm -rf package/lean/luci-theme-neobird
 git clone --depth=1 https://github.com/thinktip/luci-theme-neobird.git package/lean/luci-theme-neobird
+
+sed -i 's/shadowsocksr/vssr/g' ./package/lean/luci-theme-neobird/luasrc/view/themes/neobird/header.htm
+
+sed -i '/host.write/ihost.default="70:85:C2:36:CA:5A"\n' feeds/luci/apps/luci-app-wol/luasrc/model/cbi/wol.lua
 
 # ./scripts/feeds update -a
 # ./scripts/feeds install -a
